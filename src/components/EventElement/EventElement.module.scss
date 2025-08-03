@@ -1,0 +1,67 @@
+.eventWrapper {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+
+  .eventHeader {
+    padding: var(--standart-space);
+    .eventTitle {
+      font-weight: bold;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.4em;
+      height: calc(1.4em * 2);
+      text-align: left;
+    }
+  }
+
+  .eventImageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1.414;
+    overflow: hidden;
+
+    .eventImage {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background-color: lightgrey;
+    }
+  }
+
+  .eventBottomSection {
+    margin-top: var(--standart-space);
+    padding: var(--standart-space);
+    .eventVenueWrapper {
+      display: flex;
+    }
+  }
+
+  .addEventSection {
+    margin-top: 12px;
+    display: flex;
+    justify-content: end;
+    padding: var(--standart-space);
+    .addButton {
+      background-color: var(--brand-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+    }
+    .addButton:hover {
+      cursor: pointer;
+    }
+    .addButton:active {
+      background-color: var(--brand-color-hover);
+    }
+  }
+}

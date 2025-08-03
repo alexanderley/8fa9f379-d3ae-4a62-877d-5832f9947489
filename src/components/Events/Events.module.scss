@@ -1,0 +1,23 @@
+.eventsWrapper {
+  padding: 0 var(--standart-space);
+  max-width: 800px;
+  margin: 0 auto;
+  .eventGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--standart-space);
+  }
+
+  .eventDayGroup {
+    position: relative;
+    margin-bottom: 40px;
+    .eventDay {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: var(--brand-color);
+      padding: var(--standart-space);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+  }
+}
