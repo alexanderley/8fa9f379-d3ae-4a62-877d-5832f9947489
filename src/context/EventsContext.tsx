@@ -16,6 +16,10 @@ export const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [groupedEvents, setGroupedEvents] = useState<GroupedEvents>({});
 
+  useEffect(() => {
+    console.log("groupedEvents: ", groupedEvents);
+  }, [groupedEvents]);
+
   const groupEventsByDay = (eventsToGroup: Event[]): GroupedEvents => {
     const sortedEvents = [...eventsToGroup].sort((a, b) => {
       return new Date(a.date).getTime() - new Date(b.date).getTime();
@@ -78,6 +82,10 @@ export const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
   useEffect(() => {
     fetchEvents();
   }, []);
+
+  useEffect(() => {
+    console.log("events fetched: ", events);
+  }, [events]);
 
   return (
     <EventsContext.Provider value={{ events, groupedEvents }}>

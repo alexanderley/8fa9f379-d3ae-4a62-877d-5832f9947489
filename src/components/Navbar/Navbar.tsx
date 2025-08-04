@@ -1,5 +1,6 @@
 import styles from "./Navbar.module.scss";
-import { faShoppingCart, faFilter } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
@@ -14,7 +15,9 @@ export default function () {
         </div>
       </div>
       <div className={styles.navRightSection}>
-        <ShoppingCart />
+        <Link to="/cart">
+          <ShoppingCart />
+        </Link>
       </div>
     </div>
   );

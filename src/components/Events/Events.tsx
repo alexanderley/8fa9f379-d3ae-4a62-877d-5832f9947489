@@ -1,25 +1,35 @@
-import React, { useContext } from "react";
-
-import { EventsContext } from "../../context/EventsContext";
+import { useEventsContext } from "../../context/EventsContext";
+import { useCartContext } from "../../context/CartContext";
 import { EventElement } from "../EventElement/EventElement";
 
 import styles from "./Events.module.scss";
 
-import { Event, GroupedEvents } from "../../types/eventTypes";
+import { Event } from "../../types/eventTypes";
 
 export default function Events() {
-  const context = useContext(EventsContext);
-  const groupedEvents = context?.groupedEvents || {};
+  const { groupedEvents } = useEventsContext();
+  const { cartItems } = useCartContext();
+
+  // lookup for cartIds
+  const cartIds = new Set(cartItems.map((item) => item._id));
 
   return (
-    <>
-      <div className={styles.eventsWrapper}>
-        <h2>Public Events</h2>
-        {Object.keys(groupedEvents).map((dateKey) => (
+    <div className={styles.eventsWrapper}>
+      <h2>Public Events</h2>
+
+      {Object.entries(groupedEvents).map(([dateKey, events]) => {
+        // filter the object based on the cartIds
+        const filteredEvents = events.filter(
+          (event) => !cartIds.has(event._id)
+        );
+        // Skip date group if no events are left
+        if (filteredEvents.length === 0) return null;
+
+        return (
           <div key={dateKey} className={styles.eventDayGroup}>
             <h3 className={styles.eventDay}>{dateKey}</h3>
             <div className={styles.eventGrid}>
-              {groupedEvents[dateKey].map((event: Event) => (
+              {filteredEvents.map((event) => (
                 <EventElement
                   key={event._id}
                   _id={event._id}
@@ -33,8 +43,8 @@ export default function Events() {
               ))}
             </div>
           </div>
-        ))}
-      </div>
-    </>
+        );
+      })}
+    </div>
   );
 }

@@ -21,10 +21,6 @@ export const EventElement: React.FC<EventElementProps> = ({
   startTime,
   endTime,
 }) => {
-  // const contextEvents = useContext(EventsContext);
-  // if (!contextEvents) throw new Error("Missing CartProvider");
-  // const { events } = contextEvents;
-
   const { events } = useEventsContext();
   const { cartItems, setCartItems } = useCartContext();
 

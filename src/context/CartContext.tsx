@@ -1,35 +1,4 @@
-// import React, { createContext, useState, useContext } from "react";
-// import { Event } from "../types/eventTypes";
-
-// type CartContextType = {
-//   cartItems: Event[];
-//   setCartItems: React.Dispatch<React.SetStateAction<string[]>>;
-// };
-
-// type CartProviderProps = {
-//   children: React.ReactNode;
-// };
-
-// export const CartContext = createContext<CartContextType>({
-//   cartItems: [],
-//   setCartItems: () => {},
-// });
-
-// export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-//   const [cartItems, setCartItems] = useState<Event[]>([]);
-
-//   return (
-//     <CartContext.Provider value={{ cartItems, setCartItems }}>
-//       {children}
-//     </CartContext.Provider>
-//   );
-// };
-
-// // Hook for easier consumption
-// export const useCartContext = () => {
-//   return useContext(CartContext);
-// };
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import { Event } from "../types/eventTypes";
 
 type CartContextType = {
@@ -43,11 +12,15 @@ type CartProviderProps = {
 
 export const CartContext = createContext<CartContextType>({
   cartItems: [],
-  setCartItems: () => {}, // This is fine for default value
+  setCartItems: () => {},
 });
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cartItems, setCartItems] = useState<Event[]>([]);
+
+  // useEffect(() => {
+  //   console.log("cartItems: ", cartItems);
+  // }, []);
 
   return (
     <CartContext.Provider value={{ cartItems, setCartItems }}>
@@ -56,5 +29,4 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   );
 };
 
-// Custom hook
 export const useCartContext = () => useContext(CartContext);

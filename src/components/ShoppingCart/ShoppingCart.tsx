@@ -8,9 +8,9 @@ import { CartContext } from "../../context/CartContext";
 const ShoppingCart: React.FC = () => {
   const { cartItems, setCartItems } = useContext(CartContext);
 
-  useEffect(() => {
-    console.log("cartItems: ", cartItems);
-  }, []);
+  // useEffect(() => {
+  //   console.log("cartItems: ", cartItems);
+  // }, []);
 
   return (
     <div className={styles.shoppingCartContainer}>
