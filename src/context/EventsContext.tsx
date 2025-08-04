@@ -1,51 +1,17 @@
 import axios from "axios";
 import React, { createContext, useEffect, useState, ReactNode } from "react";
 
-type Event = {
-  title: string;
-  description: string;
-  date: string;
-};
-
-type GroupedEvents = {
-  [formattedDate: string]: Event[];
-};
-
-type EventsContextType = {
-  events: Event[];
-  groupedEvents: GroupedEvents;
-};
-
-type EventsProviderProps = {
-  children: ReactNode;
-};
+// Import types
+import {
+  Event,
+  GroupedEvents,
+  EventsContextType,
+  EventsProviderProps,
+} from "../types/eventTypes";
 
 export const EventsContext = createContext<EventsContextType | undefined>(
   undefined
 );
-
-// Helper function for ordering events and formatting the data
-// const groupEventsByDay = (events: Event[]): GroupedEvents => {
-//   const sortedEvents = [...events].sort((a, b) => {
-//     return new Date(a.date).getTime() - new Date(b.date).getTime();
-//   });
-
-//   return sortedEvents.reduce((acc: GroupedEvents, event) => {
-//     const date = new Date(event.date);
-//     const formatted = date
-//       .toLocaleDateString("en-US", {
-//         weekday: "short",
-//         month: "short",
-//         day: "2-digit",
-//         year: "numeric",
-//       })
-//       .toUpperCase();
-
-//     if (!acc[formatted]) acc[formatted] = [];
-//     acc[formatted].push(event);
-//     return acc;
-//   }, {});
-// };
 
 const groupEventsByDay = (events: Event[]): GroupedEvents => {
   const sortedEvents = [...events].sort((a, b) => {

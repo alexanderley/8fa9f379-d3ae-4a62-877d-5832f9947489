@@ -1,17 +1,15 @@
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 
 import { EventsContext } from "../../context/EventsContext";
 import { EventElement } from "../EventElement/EventElement";
 
 import styles from "./Events.module.scss";
 
-export default function Events() {
-  const { events, groupedEvents } = useContext(EventsContext);
+import { Event, GroupedEvents } from "../../types/eventTypes";
 
-  useEffect(() => {
-    console.log("CTX groupedEvents: ", groupedEvents);
-  }, [groupedEvents]);
+export default function Events() {
+  const context = useContext(EventsContext);
+  const groupedEvents = context?.groupedEvents || {};
 
   return (
     <>
@@ -21,13 +19,13 @@ export default function Events() {
           <div key={dateKey} className={styles.eventDayGroup}>
             <h3 className={styles.eventDay}>{dateKey}</h3>
             <div className={styles.eventGrid}>
-              {groupedEvents[dateKey].map((event) => (
+              {groupedEvents[dateKey].map((event: Event) => (
                 <EventElement
                   key={event._id}
                   date={event.date}
                   title={event.title}
                   flyerFront={event.flyerFront}
-                  venue={event.venue?.name}
+                  venue={event.venue?.name || ""}
                   startTime={event.formattedStart}
                   endTime={event.formattedEnd}
                 />
