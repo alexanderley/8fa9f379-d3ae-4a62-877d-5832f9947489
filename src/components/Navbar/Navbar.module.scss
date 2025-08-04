@@ -4,4 +4,13 @@
   display: flex;
   gap: 15px;
   padding: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+
+  .navLeft {
+    display: flex;
+    gap: var(--standart-space);
+  }
 }

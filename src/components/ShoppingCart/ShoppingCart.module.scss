@@ -1,0 +1,22 @@
+.shoppingCartContainer {
+  //   background-color: red;
+  position: relative;
+
+  .cartCounter {
+    background-color: red;
+    font-size: 12px;
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    text-align: center;
+    border-radius: 50%;
+    top: -12px;
+    left: -12px;
+    position: absolute;
+  }
+}
+
+.shoppingCartContainer:hover {
+  cursor: pointer;
+}
