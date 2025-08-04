@@ -16,3 +16,6 @@ function App() {
 }
 
 export default App;
+
+//  <Route path="/" element={<HomePage />} />
+//   <Route path="/cart" element={<CartPage />} />

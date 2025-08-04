@@ -43,7 +43,13 @@ export const EventElement: React.FC<EventElementProps> = ({
     console.log("events: ", events);
     console.log("add to cart ID", _id);
     const foundEvent = findEvent(_id);
-    // setCart(foundEvenmt)
+    if (!foundEvent) return;
+
+    setCartItems((prev) => {
+      const alreadyExists = prev.some((item) => item._id === foundEvent._id);
+      if (alreadyExists) return prev;
+      return [...prev, foundEvent];
+    });
   };
   return (
     <div className={styles.eventWrapper}>
