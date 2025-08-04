@@ -35,8 +35,22 @@
   .eventBottomSection {
     margin-top: var(--standart-space);
     padding: var(--standart-space);
+
     .eventVenueWrapper {
       display: flex;
+      align-items: center;
+
+      gap: var(--standart-space);
+      .eventLocationTitle {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.4em;
+        height: calc(1.4em * 1);
+        text-align: left;
+      }
     }
   }
 

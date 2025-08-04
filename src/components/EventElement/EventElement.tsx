@@ -1,28 +1,50 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "../EventElement/EventElement.module.scss";
 
 // font-awesome inport
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarker } from "@fortawesome/free-solid-svg-icons";
 
-// #Todo correct the venue
-type EventElementProps = {
-  title: string;
-  date: string;
-  flyerFront: string;
-  venue: string;
-  startTime: string;
-  endTime: string;
-};
+import { EventElementProps } from "../../types/eventTypes";
+import { EventsContext, useEventsContext } from "../../context/EventsContext";
+import { CartContext, useCartContext } from "../../context/CartContext";
+
+// types
+import { Event } from "../../types/eventTypes";
 
 export const EventElement: React.FC<EventElementProps> = ({
-  title,
+  _id,
   date,
+  title,
   flyerFront,
   venue,
   startTime,
   endTime,
 }) => {
+  // const contextEvents = useContext(EventsContext);
+  // if (!contextEvents) throw new Error("Missing CartProvider");
+  // const { events } = contextEvents;
+
+  const { events } = useEventsContext();
+  const { cartItems, setCartItems } = useCartContext();
+
+  useEffect(() => {
+    console.log("cartItems: ", cartItems);
+  }, [cartItems]);
+
+  const findEvent = (eventId: string) => {
+    console.log("event Id");
+    const foundEvent = events.find((event: Event) => event._id === eventId);
+    console.log("found Event: ", foundEvent);
+    return foundEvent;
+  };
+
+  const addToCartHandler = () => {
+    console.log("events: ", events);
+    console.log("add to cart ID", _id);
+    const foundEvent = findEvent(_id);
+    // setCart(foundEvenmt)
+  };
   return (
     <div className={styles.eventWrapper}>
       <div className={styles.eventHeader}>
@@ -40,7 +62,7 @@ export const EventElement: React.FC<EventElementProps> = ({
         <div className={styles.eventLocationWrapper}>
           <div className={styles.eventVenueWrapper}>
             <FontAwesomeIcon icon={faMapMarker} />
-            <div className="eventLocationTitle">{venue}</div>
+            <div className={styles.eventLocationTitle}>{venue}</div>
           </div>
           <span className="eventStartTime">I Starts: {startTime}</span>{" "}
           <br></br>
@@ -48,7 +70,9 @@ export const EventElement: React.FC<EventElementProps> = ({
         </div>
       </div>
       <div className={styles.addEventSection}>
-        <button className={styles.addButton}>+</button>
+        <button className={styles.addButton} onClick={addToCartHandler}>
+          +
+        </button>
       </div>
     </div>
   );

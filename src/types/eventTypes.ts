@@ -31,3 +31,13 @@ export type EventsContextType = {
 export type EventsProviderProps = {
   children: ReactNode;
 };
+
+export type EventElementProps = {
+  _id: string;
+  title: string;
+  date: string;
+  flyerFront: string;
+  venue: string;
+  startTime: string;
+  endTime: string;
+};

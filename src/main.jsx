@@ -3,12 +3,15 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 
-import { EventsProvider } from "./context/EventsContext.js";
+import { EventsProvider } from "./context/EventsContext";
+import { CartProvider } from "./context/CartContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <EventsProvider>
-      <App />
+      <CartProvider>
+        <App />
+      </CartProvider>
     </EventsProvider>
   </StrictMode>
 );

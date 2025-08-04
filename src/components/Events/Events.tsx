@@ -22,6 +22,7 @@ export default function Events() {
               {groupedEvents[dateKey].map((event: Event) => (
                 <EventElement
                   key={event._id}
+                  _id={event._id}
                   date={event.date}
                   title={event.title}
                   flyerFront={event.flyerFront}
