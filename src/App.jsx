@@ -1,21 +1,20 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
+
+import HomePage from "./pages/HomePage/Homepage";
+import CartPage from "./pages/CartPage/CartPage";
 import Events from "./components/Events/Events";
 
 function App() {
   return (
-    <>
+    <Router>
       <Navbar />
-      <Events />
-    </>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/cart" element={<CartPage />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
-
-//  <Route path="/" element={<HomePage />} />
-//   <Route path="/cart" element={<CartPage />} />
