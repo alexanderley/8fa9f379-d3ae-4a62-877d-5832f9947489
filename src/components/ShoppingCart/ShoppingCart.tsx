@@ -6,11 +6,7 @@ import styles from "./ShoppingCart.module.scss";
 import { CartContext } from "../../context/CartContext";
 
 const ShoppingCart: React.FC = () => {
-  const { cartItems, setCartItems } = useContext(CartContext);
-
-  // useEffect(() => {
-  //   console.log("cartItems: ", cartItems);
-  // }, []);
+  const { cartItems } = useContext(CartContext);
 
   return (
     <div className={styles.shoppingCartContainer}>

@@ -4,7 +4,6 @@ import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import SearchBar from "../SearchBar/SearchBar";
-
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 export default function () {

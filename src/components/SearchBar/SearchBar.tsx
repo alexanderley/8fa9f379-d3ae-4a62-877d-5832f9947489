@@ -3,17 +3,9 @@ import { TextField, Paper, List, ListItem, ListItemText } from "@mui/material";
 import { useEventsContext } from "../../context/EventsContext";
 import styles from "./SearchBar.module.scss";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import InputAdornment from "@mui/material/InputAdornment";
-
 const SearchBar: React.FC = () => {
   const { events } = useEventsContext();
   const [search, setSearch] = useState("");
-
-  useEffect(() => {
-    console.log("events arrived in searchbar: ", events);
-  }, [events]);
 
   const filteredEvents = useMemo(() => {
     const query = search.toLowerCase().trim();
@@ -40,7 +32,7 @@ const SearchBar: React.FC = () => {
         <Paper className={styles.resultBox} elevation={3}>
           <List>
             {filteredEvents.slice(0, 5).map((event) => (
-              <ListItem key={event._id} button>
+              <ListItem key={event._id} component="button">
                 <ListItemText
                   primary={event.title}
                   secondary={event.venue?.name}

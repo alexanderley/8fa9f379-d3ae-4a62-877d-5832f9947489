@@ -17,11 +17,6 @@ export const CartContext = createContext<CartContextType>({
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cartItems, setCartItems] = useState<Event[]>([]);
-
-  // useEffect(() => {
-  //   console.log("cartItems: ", cartItems);
-  // }, []);
-
   return (
     <CartContext.Provider value={{ cartItems, setCartItems }}>
       {children}
