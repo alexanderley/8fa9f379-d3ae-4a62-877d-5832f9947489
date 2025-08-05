@@ -13,7 +13,6 @@ import { Event } from "../../types/eventTypes";
 
 export const EventElement: React.FC<EventElementProps> = ({
   _id,
-  date,
   title,
   flyerFront,
   venue,
@@ -29,9 +28,6 @@ export const EventElement: React.FC<EventElementProps> = ({
     const foundEvent = events.find((event: Event) => event._id === eventId);
     return foundEvent;
   };
-  useEffect(() => {
-    console.log("venue: ", venueLocation);
-  });
 
   const eventClickHandler = (url: string) => {
     if (!url) return;

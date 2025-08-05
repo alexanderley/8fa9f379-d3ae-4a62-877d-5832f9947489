@@ -15,10 +15,6 @@ export const EventsContext = createContext<EventsContextType>({
 export const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [groupedEvents, setGroupedEvents] = useState<GroupedEvents>({});
-
-  // useEffect(() => {
-  //   console.log("groupedEvents: ", groupedEvents);
-  // }, [groupedEvents]);
   useEffect(() => {
     console.log("events: ", events);
   }, [events]);
