@@ -33,6 +33,7 @@ export default function Events() {
                   venue={event.venue?.name || ""}
                   startTime={event.formattedStart}
                   endTime={event.formattedEnd}
+                  venueLocation={event.venue?.direction || ""}
                 />
               ))}
             </div>

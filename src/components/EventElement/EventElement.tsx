@@ -20,13 +20,27 @@ export const EventElement: React.FC<EventElementProps> = ({
   venue,
   startTime,
   endTime,
+  venueLocation,
 }) => {
   const { events } = useEventsContext();
-  const { cartItems, setCartItems } = useCartContext();
+  const { setCartItems } = useCartContext();
 
   const findEvent = (eventId: string) => {
     const foundEvent = events.find((event: Event) => event._id === eventId);
     return foundEvent;
+  };
+  useEffect(() => {
+    console.log("venue: ", venueLocation);
+  });
+
+  const eventClickHandler = (url: string) => {
+    if (!url) return;
+
+    // const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    //   url
+    // )}`;
+    console.log("location: ", url);
+    window.open(url, "_blank");
   };
 
   const addToCartHandler = () => {
@@ -54,7 +68,10 @@ export const EventElement: React.FC<EventElementProps> = ({
       </div>
       <div className={styles.eventBottomSection}>
         <div className={styles.eventLocationWrapper}>
-          <div className={styles.eventVenueWrapper}>
+          <div
+            className={styles.eventVenueWrapper}
+            onClick={() => eventClickHandler(venueLocation)}
+          >
             <FontAwesomeIcon icon={faMapMarker} />
             <div className={styles.eventLocationTitle}>{venue}</div>
           </div>

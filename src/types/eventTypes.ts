@@ -40,4 +40,5 @@ export type EventElementProps = {
   venue: string;
   startTime: string;
   endTime: string;
+  venueLocation: string;
 };

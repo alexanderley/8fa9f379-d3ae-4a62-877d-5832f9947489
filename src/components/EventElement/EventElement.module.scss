@@ -52,6 +52,10 @@
         text-align: left;
       }
     }
+    .eventVenueWrapper:hover {
+      cursor: pointer;
+      color: var(--brand-color-hover);
+    }
   }
 
   .addEventSection {
