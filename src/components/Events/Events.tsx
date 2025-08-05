@@ -4,8 +4,6 @@ import { EventElement } from "../EventElement/EventElement";
 
 import styles from "./Events.module.scss";
 
-import { Event } from "../../types/eventTypes";
-
 export default function Events() {
   const { groupedEvents } = useEventsContext();
   const { cartItems } = useCartContext();
@@ -18,11 +16,9 @@ export default function Events() {
       <h2>Public Events</h2>
 
       {Object.entries(groupedEvents).map(([dateKey, events]) => {
-        // filter the object based on the cartIds
         const filteredEvents = events.filter(
           (event) => !cartIds.has(event._id)
         );
-        // Skip date group if no events are left
         if (filteredEvents.length === 0) return null;
 
         return (
