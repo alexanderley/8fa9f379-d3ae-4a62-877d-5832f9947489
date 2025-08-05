@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import SearchBar from "../SearchBar/SearchBar";
+
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 export default function () {
   return (
     <div className={styles.navContainer}>
       <div className={styles.navLeft}>
-        <div className="search">Search</div>
+        <div className="search">
+          <SearchBar />
+        </div>
         <div className="filter">
           <FontAwesomeIcon icon={faFilter} />
         </div>

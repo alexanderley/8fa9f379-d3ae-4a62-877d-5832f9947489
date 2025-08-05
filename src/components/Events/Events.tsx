@@ -7,8 +7,6 @@ import styles from "./Events.module.scss";
 export default function Events() {
   const { groupedEvents } = useEventsContext();
   const { cartItems } = useCartContext();
-
-  // lookup for cartIds
   const cartIds = new Set(cartItems.map((item) => item._id));
 
   return (

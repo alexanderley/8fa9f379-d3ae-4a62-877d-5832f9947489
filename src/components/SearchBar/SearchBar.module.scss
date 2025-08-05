@@ -1,0 +1,32 @@
+.searchField {
+  :global(.MuiOutlinedInput-root) {
+    fieldset {
+      border-color: white;
+    }
+
+    &:hover fieldset {
+      border-color: white;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: white;
+    }
+  }
+
+  input {
+    color: white;
+  }
+
+  :global(.MuiInputLabel-root) {
+    color: white;
+
+    &.Mui-focused {
+      color: white;
+    }
+  }
+}
+
+.resultBox {
+  position: absolute;
+  z-index: 20;
+}

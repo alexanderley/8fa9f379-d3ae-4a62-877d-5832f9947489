@@ -17,7 +17,7 @@ export const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
   const [groupedEvents, setGroupedEvents] = useState<GroupedEvents>({});
 
   useEffect(() => {
-    console.log("groupedEvents: ", groupedEvents);
+    // console.log("groupedEvents: ", groupedEvents);
   }, [groupedEvents]);
 
   const groupEventsByDay = (eventsToGroup: Event[]): GroupedEvents => {

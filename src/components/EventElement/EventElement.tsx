@@ -24,20 +24,12 @@ export const EventElement: React.FC<EventElementProps> = ({
   const { events } = useEventsContext();
   const { cartItems, setCartItems } = useCartContext();
 
-  useEffect(() => {
-    console.log("cartItems: ", cartItems);
-  }, [cartItems]);
-
   const findEvent = (eventId: string) => {
-    console.log("event Id");
     const foundEvent = events.find((event: Event) => event._id === eventId);
-    console.log("found Event: ", foundEvent);
     return foundEvent;
   };
 
   const addToCartHandler = () => {
-    console.log("events: ", events);
-    console.log("add to cart ID", _id);
     const foundEvent = findEvent(_id);
     if (!foundEvent) return;
 
