@@ -3,7 +3,7 @@
 1. clone the repo to you locao enviourment using "git clone"
 2. use "npm install" to install the depencies for the project
 3. use "npm run dev" to start the server
-4. the server should run on "http://localhost:5173/""
+4. the server should run on "http://localhost:5173/"
 
 ## Stack that has been use
 
