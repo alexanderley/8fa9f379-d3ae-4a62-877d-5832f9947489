@@ -1,15 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import styles from "../EventElement/EventElement.module.scss";
 
-// font-awesome inport
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarker } from "@fortawesome/free-solid-svg-icons";
 
 import { EventElementProps } from "../../types/eventTypes";
-import { EventsContext, useEventsContext } from "../../context/EventsContext";
-import { CartContext, useCartContext } from "../../context/CartContext";
+import { useEventsContext } from "../../context/EventsContext";
+import { useCartContext } from "../../context/CartContext";
 
-// types
 import { Event } from "../../types/eventTypes";
 
 export const EventElement: React.FC<EventElementProps> = ({
@@ -35,11 +33,6 @@ export const EventElement: React.FC<EventElementProps> = ({
 
   const eventClickHandler = (url: string) => {
     if (!url) return;
-
-    // const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    //   url
-    // )}`;
-    console.log("location: ", url);
     window.open(url, "_blank");
   };
 

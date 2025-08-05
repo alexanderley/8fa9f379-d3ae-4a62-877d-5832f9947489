@@ -1,8 +1,5 @@
 .eventsWrapper {
-  padding: 0 var(--standart-space);
-  max-width: 1200px;
-  margin: 0 auto;
-
+  // padding: 0 var(--standart-space);
   .eventGrid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -15,7 +12,7 @@
     .eventDay {
       background-color: rgba(255, 255, 255, 0.8);
       color: var(--brand-color);
-      padding: var(--standart-space);
+      padding: var(--standart-space) 0;
       position: sticky;
       top: 0;
       z-index: 10;

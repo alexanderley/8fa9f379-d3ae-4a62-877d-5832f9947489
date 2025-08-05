@@ -3,8 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* color-scheme: light dark; */
-  color-scheme: light;
   background-color: white;
   color: black;
 
@@ -16,7 +14,11 @@
   --brand-color: rgb(41, 90, 215);
   --brand-color-hover: rgb(24, 64, 163);
 
-  --standart-space: 10px;
+  /* spaces */
+  --standart-space: 20px;
+
+  /* viewport */
+  --desktop-viewport-width: 1280px;
 }
 
 a {
@@ -36,15 +38,8 @@ h1 {
   line-height: 1.1;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.viewportWrapper {
+  max-width: var(--desktop-viewport-width);
+  margin: 0 auto;
+  padding: 0 var(--standart-space);
 }

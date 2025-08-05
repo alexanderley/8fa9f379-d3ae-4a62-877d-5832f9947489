@@ -10,36 +10,38 @@ export default function Events() {
   const cartIds = new Set(cartItems.map((item) => item._id));
 
   return (
-    <div className={styles.eventsWrapper}>
-      <h2>Public Events</h2>
+    <div className="viewportWrapper">
+      <div className={styles.eventsWrapper}>
+        <h2>Public Events</h2>
 
-      {Object.entries(groupedEvents).map(([dateKey, events]) => {
-        const filteredEvents = events.filter(
-          (event) => !cartIds.has(event._id)
-        );
-        if (filteredEvents.length === 0) return null;
+        {Object.entries(groupedEvents).map(([dateKey, events]) => {
+          const filteredEvents = events.filter(
+            (event) => !cartIds.has(event._id)
+          );
+          if (filteredEvents.length === 0) return null;
 
-        return (
-          <div key={dateKey} className={styles.eventDayGroup}>
-            <h3 className={styles.eventDay}>{dateKey}</h3>
-            <div className={styles.eventGrid}>
-              {filteredEvents.map((event) => (
-                <EventElement
-                  key={event._id}
-                  _id={event._id}
-                  date={event.date}
-                  title={event.title}
-                  flyerFront={event.flyerFront}
-                  venue={event.venue?.name || ""}
-                  startTime={event.formattedStart}
-                  endTime={event.formattedEnd}
-                  venueLocation={event.venue?.direction || ""}
-                />
-              ))}
+          return (
+            <div key={dateKey} className={styles.eventDayGroup}>
+              <h3 className={styles.eventDay}>{dateKey}</h3>
+              <div className={styles.eventGrid}>
+                {filteredEvents.map((event) => (
+                  <EventElement
+                    key={event._id}
+                    _id={event._id}
+                    date={event.date}
+                    title={event.title}
+                    flyerFront={event.flyerFront}
+                    venue={event.venue?.name || ""}
+                    startTime={event.formattedStart}
+                    endTime={event.formattedEnd}
+                    venueLocation={event.venue?.direction || ""}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }
