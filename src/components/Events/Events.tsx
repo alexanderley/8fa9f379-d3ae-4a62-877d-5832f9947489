@@ -13,13 +13,11 @@ export default function Events() {
     <div className="viewportWrapper">
       <div className={styles.eventsWrapper}>
         <h2>Public Events</h2>
-
         {Object.entries(groupedEvents).map(([dateKey, events]) => {
           const filteredEvents = events.filter(
             (event) => !cartIds.has(event._id)
           );
           if (filteredEvents.length === 0) return null;
-
           return (
             <div key={dateKey} className={styles.eventDayGroup}>
               <h3 className={styles.eventDay}>{dateKey}</h3>

@@ -28,12 +28,13 @@ export const EventElement: React.FC<EventElementProps> = ({
     const foundEvent = events.find((event: Event) => event._id === eventId);
     return foundEvent;
   };
-
+  // #Todo memorize this with useCallback eventually
   const eventClickHandler = (url: string) => {
     if (!url) return;
     window.open(url, "_blank");
   };
 
+  // #Todo memorize this with useCallback eventually
   const addToCartHandler = () => {
     const foundEvent = findEvent(_id);
     if (!foundEvent) return;

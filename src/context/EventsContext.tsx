@@ -16,6 +16,7 @@ export const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [groupedEvents, setGroupedEvents] = useState<GroupedEvents>({});
 
+  // #Todo optimize this function with useCallback if it makes sense
   const groupEventsByDay = (eventsToGroup: Event[]): GroupedEvents => {
     const sortedEvents = [...eventsToGroup].sort((a, b) => {
       return new Date(a.date).getTime() - new Date(b.date).getTime();
