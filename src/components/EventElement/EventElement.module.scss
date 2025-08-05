@@ -4,16 +4,25 @@
 
   .eventHeader {
     padding: var(--standart-space);
+    display: flex;
+    gap: 10px;
+
+    .circleImg {
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+    }
+
     .eventTitle {
       font-weight: bold;
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
       overflow: hidden;
       text-overflow: ellipsis;
+      line-clamp: 1;
+      -webkit-line-clamp: 2;
       line-height: 1.4em;
       height: calc(1.4em * 2);
-      text-align: left;
     }
   }
 
@@ -33,23 +42,26 @@
   }
 
   .eventBottomSection {
-    margin-top: var(--standart-space);
     padding: var(--standart-space);
 
     .eventVenueWrapper {
       display: flex;
       align-items: center;
+      gap: 10px;
 
-      gap: var(--standart-space);
+      .mapIcon {
+        color: var(--brand-color);
+      }
+
       .eventLocationTitle {
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
         overflow: hidden;
         text-overflow: ellipsis;
+        line-clamp: 1;
+        -webkit-line-clamp: 1;
         line-height: 1.4em;
         height: calc(1.4em * 1);
-        text-align: left;
       }
     }
     .eventVenueWrapper:hover {
@@ -59,15 +71,16 @@
   }
 
   .addEventSection {
-    margin-top: 12px;
     display: flex;
     justify-content: end;
-    padding: var(--standart-space);
+    padding: 0 var(--standart-space) var(--standart-space) 0;
+
     .addButton {
+      display: flex;
       background-color: var(--brand-color);
       color: white;
-      width: 40px;
-      height: 40px;
+      width: 35px;
+      height: 35px;
       font-size: 24px;
       border-radius: 50%;
       display: flex;

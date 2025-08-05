@@ -31,6 +31,7 @@ const CartPage: React.FC = () => {
                 startTime={event.formattedStart}
                 endTime={event.formattedEnd}
                 venueLocation={event.venue?.direction || ""}
+                hasAddButton={false}
               />
             ))}
           </div>

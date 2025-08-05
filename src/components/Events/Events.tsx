@@ -35,6 +35,7 @@ export default function Events() {
                     startTime={event.formattedStart}
                     endTime={event.formattedEnd}
                     venueLocation={event.venue?.direction || ""}
+                    hasAddButton={true}
                   />
                 ))}
               </div>

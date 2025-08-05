@@ -3,6 +3,7 @@ import styles from "../EventElement/EventElement.module.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarker } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import { EventElementProps } from "../../types/eventTypes";
 import { useEventsContext } from "../../context/EventsContext";
@@ -19,6 +20,7 @@ export const EventElement: React.FC<EventElementProps> = ({
   startTime,
   endTime,
   venueLocation,
+  hasAddButton,
 }) => {
   const { events } = useEventsContext();
   const { setCartItems } = useCartContext();
@@ -49,10 +51,14 @@ export const EventElement: React.FC<EventElementProps> = ({
   return (
     <div className={styles.eventWrapper}>
       <div className={styles.eventHeader}>
+        <img
+          className={styles.circleImg}
+          src="https://images.unsplash.com/photo-1578946956271-e8234ecaaadd?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt=""
+        />
         <span className={styles.eventTitle}>{title}</span>
       </div>
       <div className={styles.eventImageWrapper}>
-        <i className="fas fa-map-marker"></i>
         <img
           src={flyerFront}
           alt={`Flyer for ${title}`}
@@ -65,19 +71,29 @@ export const EventElement: React.FC<EventElementProps> = ({
             className={styles.eventVenueWrapper}
             onClick={() => eventClickHandler(venueLocation)}
           >
-            <FontAwesomeIcon icon={faMapMarker} />
+            <FontAwesomeIcon icon={faMapMarker} className={styles.mapIcon} />
             <div className={styles.eventLocationTitle}>{venue}</div>
           </div>
-          <span className="eventStartTime">I Starts: {startTime}</span>{" "}
-          <br></br>
-          <span className="eventStartTime">I Ends: {endTime}</span>
+          {startTime && endTime ? (
+            <>
+              <span className="eventStartTime">I Starts: {startTime}</span>
+              <br />
+              <span className="eventStartTime">I Ends: {endTime}</span>
+            </>
+          ) : (
+            ""
+          )}
         </div>
       </div>
-      <div className={styles.addEventSection}>
-        <button className={styles.addButton} onClick={addToCartHandler}>
-          +
-        </button>
-      </div>
+      {hasAddButton ? (
+        <div className={styles.addEventSection}>
+          <button className={styles.addButton} onClick={addToCartHandler}>
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
