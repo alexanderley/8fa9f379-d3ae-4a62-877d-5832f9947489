@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export type Event = {
+export type EventItem = {
   _id: string;
   title: string;
   description: string;
@@ -20,11 +20,12 @@ export type Event = {
 };
 
 export type GroupedEvents = {
-  [formattedDate: string]: Event[];
+  [formattedDate: string]: EventItem[];
 };
 
 export type EventsContextType = {
-  events: Event[];
+  events: EventItem[];
+  findEvent: (id: string) => EventItem | undefined;
   groupedEvents: GroupedEvents;
 };
 

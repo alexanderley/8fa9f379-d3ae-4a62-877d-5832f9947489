@@ -1,9 +1,10 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
-import { Event } from "../types/eventTypes";
+import { EventItem } from "../types/eventTypes";
 
 type CartContextType = {
-  cartItems: Event[];
-  setCartItems: React.Dispatch<React.SetStateAction<Event[]>>;
+  cartItems: EventItem[];
+  addToCart: (event: EventItem) => void;
+  removeFromCart: (id: string) => void;
 };
 
 type CartProviderProps = {
@@ -12,13 +13,27 @@ type CartProviderProps = {
 
 export const CartContext = createContext<CartContextType>({
   cartItems: [],
-  setCartItems: () => {},
+  addToCart: () => {},
+  removeFromCart: () => {},
 });
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<Event[]>([]);
+  const [cartItems, setCartItems] = useState<EventItem[]>([]);
+
+  const addToCart = (event: EventItem) => {
+    setCartItems((prev) => {
+      const alreadyExists = prev.some((item) => item._id === event._id);
+      if (alreadyExists) return prev;
+      return [...prev, event];
+    });
+  };
+
+  const removeFromCart = (id: string) => {
+    setCartItems((prev) => prev.filter((item) => item._id !== id));
+  };
+
   return (
-    <CartContext.Provider value={{ cartItems, setCartItems }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );

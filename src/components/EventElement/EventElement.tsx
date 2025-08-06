@@ -9,8 +9,6 @@ import { EventElementProps } from "../../types/eventTypes";
 import { useEventsContext } from "../../context/EventsContext";
 import { useCartContext } from "../../context/CartContext";
 
-import { Event } from "../../types/eventTypes";
-
 export const EventElement: React.FC<EventElementProps> = ({
   _id,
   title,
@@ -21,30 +19,24 @@ export const EventElement: React.FC<EventElementProps> = ({
   venueLocation,
   hasAddButton,
 }) => {
-  const { events } = useEventsContext();
-  const { setCartItems } = useCartContext();
+  const { findEvent } = useEventsContext();
+  const { addToCart, removeFromCart } = useCartContext();
 
-  const findEvent = (eventId: string) => {
-    const foundEvent = events.find((event: Event) => event._id === eventId);
-    return foundEvent;
-  };
-  // #Todo memorize this with useCallback eventually
   const eventClickHandler = (url: string) => {
     if (!url) return;
     window.open(url, "_blank");
   };
 
-  // #Todo memorize this with useCallback eventually
   const addToCartHandler = () => {
     const foundEvent = findEvent(_id);
     if (!foundEvent) return;
-
-    setCartItems((prev) => {
-      const alreadyExists = prev.some((item) => item._id === foundEvent._id);
-      if (alreadyExists) return prev;
-      return [...prev, foundEvent];
-    });
+    addToCart(foundEvent);
   };
+
+  const removeFromCartHandler = () => {
+    removeFromCart(_id);
+  };
+
   return (
     <div className={styles.eventWrapper}>
       <div className={styles.eventHeader}>

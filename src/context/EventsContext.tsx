@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { createContext, useEffect, useState, useContext } from "react";
 import {
-  Event,
+  EventItem,
   GroupedEvents,
   EventsContextType,
   EventsProviderProps,
@@ -10,14 +10,18 @@ import {
 export const EventsContext = createContext<EventsContextType>({
   events: [],
   groupedEvents: {},
+  findEvent: () => undefined,
 });
 
 export const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
-  const [events, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<EventItem[]>([]);
   const [groupedEvents, setGroupedEvents] = useState<GroupedEvents>({});
 
-  // #Todo optimize this function with useCallback if it makes sense
-  const groupEventsByDay = (eventsToGroup: Event[]): GroupedEvents => {
+  const findEvent = (id: string): EventItem | undefined => {
+    return events.find((event) => event._id === id);
+  };
+
+  const groupEventsByDay = (eventsToGroup: EventItem[]): GroupedEvents => {
     const sortedEvents = [...eventsToGroup].sort((a, b) => {
       return new Date(a.date).getTime() - new Date(b.date).getTime();
     });
@@ -66,7 +70,7 @@ export const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get<Event[]>(
+      const response = await axios.get<EventItem[]>(
         "https://teclead-ventures.github.io/data/london-events.json"
       );
       setEvents(response.data);
@@ -80,12 +84,8 @@ export const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
     fetchEvents();
   }, []);
 
-  useEffect(() => {
-    console.log("events fetched: ", events);
-  }, [events]);
-
   return (
-    <EventsContext.Provider value={{ events, groupedEvents }}>
+    <EventsContext.Provider value={{ events, findEvent, groupedEvents }}>
       {children}
     </EventsContext.Provider>
   );
