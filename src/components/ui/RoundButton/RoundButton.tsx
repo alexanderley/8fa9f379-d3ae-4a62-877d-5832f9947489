@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./RoundButton.module.scss"; // CSS module
+import styles from "./RoundButton.module.scss";
 
 type RoundButtonProps = {
   onClick: () => void;

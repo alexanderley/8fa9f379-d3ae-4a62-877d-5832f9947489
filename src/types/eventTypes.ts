@@ -42,6 +42,6 @@ export type EventElementProps = {
   startTime: string;
   endTime: string;
   venueLocation: string;
-  hasAddButton: boolean;
-  hasDeleteButton: boolean;
+  hasAddButton?: boolean;
+  hasDeleteButton?: boolean;
 };

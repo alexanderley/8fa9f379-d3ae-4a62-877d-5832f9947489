@@ -15,7 +15,6 @@ const CartPage: React.FC = () => {
           ← Back to Events
         </Link>
         <h2>Dein Warenkorb</h2>
-
         {cartItems.length === 0 ? (
           <p>Dein Warenkorb ist leer.</p>
         ) : (
