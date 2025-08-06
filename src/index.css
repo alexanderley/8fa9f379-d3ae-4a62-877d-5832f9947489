@@ -15,6 +15,7 @@
   --brand-color-hover: rgb(24, 64, 163);
 
   --delete-red: rgb(205, 62, 40);
+  --delete-red-hover: rgb(185, 49, 28);
 
   /* spaces */
   --standart-space: 20px;
@@ -48,7 +49,6 @@ h1 {
 
 .roundButton {
   display: flex;
-  /* background-color: var(--brand-color); */
   color: white;
   width: 35px;
   height: 35px;

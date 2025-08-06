@@ -13,9 +13,16 @@
 
 .addButton {
   background-color: var(--brand-color);
+
+  &:hover {
+    background-color: var(--brand-color-hover);
+  }
 }
 
 .deleteButton {
   background-color: var(--delete-red);
   font-size: 18px;
+  &:hover {
+    background-color: var(--delete-red-hover);
+  }
 }
