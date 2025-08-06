@@ -1,4 +1,4 @@
-import styles from "./Navbar.module.scss";
+import styles from "./NavBar.module.scss";
 import { Link } from "react-router-dom";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,7 +8,7 @@ import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 export default function () {
   return (
-    <div className={styles.navMainWrapper}>
+    <nav className={styles.navMainWrapper}>
       <div className={styles.navContainer}>
         <div className={styles.navLeft}>
           <div className="search">
@@ -24,6 +24,6 @@ export default function () {
           </Link>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
