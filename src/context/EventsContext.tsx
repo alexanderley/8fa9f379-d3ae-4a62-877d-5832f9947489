@@ -1,5 +1,12 @@
 import axios from "axios";
-import React, { createContext, useEffect, useState, useContext } from "react";
+import React, {
+  createContext,
+  useEffect,
+  useState,
+  useContext,
+  useCallback,
+  useMemo,
+} from "react";
 import {
   EventItem,
   GroupedEvents,
@@ -15,14 +22,16 @@ export const EventsContext = createContext<EventsContextType>({
 
 export const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
   const [events, setEvents] = useState<EventItem[]>([]);
-  const [groupedEvents, setGroupedEvents] = useState<GroupedEvents>({});
 
-  const findEvent = (id: string): EventItem | undefined => {
-    return events.find((event) => event._id === id);
-  };
+  const findEvent = useCallback(
+    (id: string): EventItem | undefined => {
+      return events.find((event) => event._id === id);
+    },
+    [events]
+  );
 
-  const groupEventsByDay = (eventsToGroup: EventItem[]): GroupedEvents => {
-    const sortedEvents = [...eventsToGroup].sort((a, b) => {
+  const groupedEvents = useMemo(() => {
+    const sortedEvents = [...events].sort((a, b) => {
       return new Date(a.date).getTime() - new Date(b.date).getTime();
     });
 
@@ -64,23 +73,23 @@ export const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
 
       if (!acc[formatted]) acc[formatted] = [];
       acc[formatted].push(enhancedEvent);
+
       return acc;
     }, {});
-  };
-
-  const fetchEvents = async () => {
-    try {
-      const response = await axios.get<EventItem[]>(
-        "https://teclead-ventures.github.io/data/london-events.json"
-      );
-      setEvents(response.data);
-      setGroupedEvents(groupEventsByDay(response.data));
-    } catch (err) {
-      console.error("Error fetching events:", err);
-    }
-  };
+  }, [events]);
 
   useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get<EventItem[]>(
+          "https://teclead-ventures.github.io/data/london-events.json"
+        );
+        setEvents(response.data);
+      } catch (err) {
+        console.error("Error fetching events:", err);
+      }
+    };
+
     fetchEvents();
   }, []);
 
