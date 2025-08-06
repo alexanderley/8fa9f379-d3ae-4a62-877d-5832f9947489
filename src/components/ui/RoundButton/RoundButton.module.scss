@@ -1,0 +1,21 @@
+.roundButton {
+  display: flex;
+  color: white;
+  width: 35px;
+  height: 35px;
+  font-size: 24px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+
+.addButton {
+  background-color: var(--brand-color);
+}
+
+.deleteButton {
+  background-color: var(--delete-red);
+  font-size: 18px;
+}

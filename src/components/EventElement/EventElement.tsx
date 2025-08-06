@@ -1,9 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import styles from "../EventElement/EventElement.module.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarker } from "@fortawesome/free-solid-svg-icons";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMapMarker,
+  faPlus,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
+
+import RoundButton from "../ui/RoundButton/RoundButton";
 
 import { EventElementProps } from "../../types/eventTypes";
 import { useEventsContext } from "../../context/EventsContext";
@@ -18,6 +23,7 @@ export const EventElement: React.FC<EventElementProps> = ({
   endTime,
   venueLocation,
   hasAddButton,
+  hasDeleteButton,
 }) => {
   const { findEvent } = useEventsContext();
   const { addToCart, removeFromCart } = useCartContext();
@@ -69,20 +75,27 @@ export const EventElement: React.FC<EventElementProps> = ({
               <br />
               <span className="eventStartTime">I Ends: {endTime}</span>
             </>
-          ) : (
-            ""
-          )}
+          ) : null}
         </div>
       </div>
-      {hasAddButton ? (
-        <div className={styles.addEventSection}>
-          <button className={styles.addButton} onClick={addToCartHandler}>
-            <FontAwesomeIcon icon={faPlus} />
-          </button>
-        </div>
-      ) : (
-        ""
-      )}
+      <div className={styles.addEventSection}>
+        {hasAddButton && (
+          <RoundButton
+            onClick={addToCartHandler}
+            icon={<FontAwesomeIcon icon={faPlus} />}
+            variant="add"
+            ariaLabel="Add to cart"
+          />
+        )}
+        {hasDeleteButton && (
+          <RoundButton
+            onClick={removeFromCartHandler}
+            icon={<FontAwesomeIcon icon={faTrash} />}
+            variant="delete"
+            ariaLabel="Remove from cart"
+          />
+        )}
+      </div>
     </div>
   );
 };

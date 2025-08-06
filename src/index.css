@@ -14,6 +14,8 @@
   --brand-color: rgb(41, 90, 215);
   --brand-color-hover: rgb(24, 64, 163);
 
+  --delete-red: rgb(205, 62, 40);
+
   /* spaces */
   --standart-space: 20px;
 
@@ -42,4 +44,27 @@ h1 {
   max-width: var(--desktop-viewport-width);
   margin: 0 auto;
   padding: 0 var(--standart-space);
+}
+
+.roundButton {
+  display: flex;
+  /* background-color: var(--brand-color); */
+  color: white;
+  width: 35px;
+  height: 35px;
+  font-size: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.addButton {
+  background-color: var(--brand-color);
+}
+
+.deleteButton {
+  background-color: var(--delete-red);
+  font-size: 18px;
 }

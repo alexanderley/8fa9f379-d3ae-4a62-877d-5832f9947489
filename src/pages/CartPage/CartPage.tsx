@@ -32,6 +32,7 @@ const CartPage: React.FC = () => {
                 endTime={event.formattedEnd}
                 venueLocation={event.venue?.direction || ""}
                 hasAddButton={false}
+                hasDeleteButton={true}
               />
             ))}
           </div>
