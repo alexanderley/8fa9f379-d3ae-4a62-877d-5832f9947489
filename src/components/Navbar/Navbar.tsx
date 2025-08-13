@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SearchBar from "../SearchBar/SearchBar";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
-export default function () {
+export default function NavBar() {
   return (
     <nav className={styles.navMainWrapper}>
       <div className={styles.navContainer}>
