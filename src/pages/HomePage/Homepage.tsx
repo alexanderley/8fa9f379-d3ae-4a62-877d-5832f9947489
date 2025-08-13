@@ -1,7 +1,7 @@
 import React from "react";
 import Events from "../../components/Events/Events";
 
-const HomePage: React.FC = () => {
+const Homepage: React.FC = () => {
   return (
     <>
       <Events />
@@ -9,4 +9,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default Homepage;

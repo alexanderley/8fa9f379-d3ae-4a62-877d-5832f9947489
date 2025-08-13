@@ -5,7 +5,7 @@ import { useCartContext } from "../../context/CartContext";
 import styles from "./CartPage.module.scss";
 import { EventElement } from "../../components/EventElement/EventElement";
 
-const CartPage: React.FC = () => {
+const Cartpage: React.FC = () => {
   const { cartItems } = useCartContext();
 
   return (
@@ -41,4 +41,4 @@ const CartPage: React.FC = () => {
   );
 };
 
-export default CartPage;
+export default Cartpage;
