@@ -1,13 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import NavBar from "./components/NavBar/NavBar";
+// import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar/NavBar";
 import HomePage from "./pages/HomePage/HomePage";
 import CartPage from "./pages/CartPage/CartPage";
 
 function App() {
   return (
     <Router>
-      <NavBar />
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/cart" element={<CartPage />} />
